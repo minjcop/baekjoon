@@ -1,0 +1,10 @@
+avgMin = 1000000;
+초기화를 매번마다 해줘야하는데 안해주었다.
+
+핵심:
+1. start, end를 나타내는 것.
+2.
+for(j = 1; j <= n; j++){
+	scanf("%d", &price[j]);
+	pricesum[j] = price[j] + pricesum[j - 1];
+}
