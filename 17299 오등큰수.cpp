@@ -1,20 +1,21 @@
 #include <iostream>
-#include <vector>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
 int main(void){
-
     int n;
     cin >> n;
 
     vector <int> v(n);
     vector <int> oh(n);
+    vector <int> freq(n); // 이걸 전역에 int freq[1000001];하면 맞는데 이건 런타임에러나온다.
     stack <int> st;
 
     for(int i = 0; i < n; ++i){
         cin >> v[i];
+        freq[v[i]]++;
     }
 
     for(int i = 0; i < n; ++i){
@@ -23,12 +24,14 @@ int main(void){
             st.push(i);
             inSt = true;
         }
-        while(!st.empty() && v[st.top()] < v[i]){ // 스택이 다 빌때까지 현재입력받은수와 스택에 있는 수를 비교해서 스택을 비교
+
+        while(!st.empty() && freq[v[st.top()]] < freq[v[i]]){
             oh[st.top()] = v[i];
             st.pop();
         }
-        if(inSt == false)
+        if(inSt == false){
             st.push(i);
+        }
     }
 
     while(!st.empty()){
