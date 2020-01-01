@@ -8,16 +8,7 @@ int main(void){
 
     cin >> A >> B >> V;
 
-    cout << ceil(V-B/A-B) + 1 << endl;
-
-
-/*
-    if(A-B > V-A){
-        cout << ceil((double)(V-A)/(A-B)) + 1 << endl; // 100 90 101의 반례를 없애기위해 만듬.
-    }else{
-        cout << (V-A)/(A-B) + 1 << endl;
-    }
-*/
+    cout << (int)ceil((V-A) / (A-B)) + 1 << '\n'; // ceil 은 리턴형이 double이므로 (int)해줘야 함.
 
     return 0;
 }
