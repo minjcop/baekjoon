@@ -1,57 +1,37 @@
-#include <stdio.h>
+#include <iostream>
+#include <algorithm> // max
 
-#define MAX 100000
+using namespace std;
 
-int score[2][MAX]; // 기존 
-int sticker[2][MAX] = { 0, };
+int a[3][100001] = { 0, };
+int dp[3][100001] = { 0, };
 
-int T, n;
+int main(void){
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
-int max(int a, int b)
-{
-	return a > b ? a : b;
-}
+	int T;
+	cin >> T;
 
-int func(int status, int c) // status, column
-{
-	if(sticker[status][c] != 0)
-		return sticker[status][c];
-	//0번째 column을 처리. 
-	sticker[0][0] = score[0][0];
-	sticker[1][0] = score[1][0];
-	
-	//else
-	if( status == 0 )
-		sticker[status][c] = max(func(1, c-1), func(1, c-2)) + score[status][c];
-	else
-		sticker[status][c] = max(func(0, c-1), func(0, c-2)) + score[status][c];
-	
-	return sticker[status][c];
-}
+	while(T--){
+        int n;
+        cin >> n;
+        for(int i = 0; i < 2; ++i){
+            for(int j = 1; j <= n; ++j){
+                cin >> a[i][j];
+            }
+        }
 
-int main()
-{
-	scanf("%d", &T);
-	int i, j;
-	
-	for(i = 0; i < T; i++){
-		for(j = 0; j < n; j++){
-			score[0][j] = 0;
-		}
-		for(j = 0; j < n; j++){
-			score[1][j] = 0;
-		}
-		scanf("%d", &n);
-		
-		
-		for(j = 0; j < n; j++){
-			scanf("%d", &score[0][j]);
-		}
-		for(j = 0; j < n; j++){
-			scanf("%d", &score[1][j]);
-		}
-		printf("%d\n", max(func(0, n + 1), func(1, n + 1)));
-	}		
+        dp[0][1] = a[0][1];
+        dp[1][1] = a[1][1];
+        dp[0][2] = dp[1][1] + a[0][2];
+        dp[1][2] = dp[0][1] + a[1][2];
+        for(int i = 3; i <= n; ++i){
+            dp[0][i] = a[0][i] + max(dp[1][i-1], dp[1][i-2]);
+            dp[1][i] = a[1][i] + max(dp[0][i-1], dp[0][i-2]);
+        }
+
+        cout << max(dp[0][n], dp[1][n]) << "\n";
+	}
 	return 0;
 }
-
