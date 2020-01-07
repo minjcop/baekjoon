@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 int n;
 void swap(int &a, int &b);
 int check(vector <string> &ar);
@@ -84,4 +82,4 @@ int check(vector <string> &ar){
             }
         }
         return maxSum;
-}|
+}
