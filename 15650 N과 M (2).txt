@@ -1,0 +1,14 @@
+굳이 모두 정렬을 해줄 필요가 없다.
+
+N과 M(1)문제처럼 모두 구해준후에.
+
+for(int i = 0; i < m-1; ++i){
+	if(a[i] > a[i+1]){
+		return ;
+	}
+}
+for(int i = 0; i < m; ++i){
+	cout << a[i] << " ";
+}
+cout << "\n";
+return ;
