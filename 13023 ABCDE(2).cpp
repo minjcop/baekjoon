@@ -51,7 +51,7 @@ void dfs(int x){
         if(check[y] == false){
             dfs(y);
             st.pop();
-            check[y] = false;
+            check[y] = false; // **
         }
 
     }
