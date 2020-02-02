@@ -51,6 +51,5 @@ int main(void){
         island.clear();
     }
 
-
 	return 0;
 }
