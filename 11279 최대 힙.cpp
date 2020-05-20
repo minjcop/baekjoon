@@ -13,7 +13,8 @@ int main(void){
     for(int i = 0; i < n; ++i){
         cin >> x;
         if(x == 0){
-            if(!pq.empty()){ // ï¿½ì¼±ï¿½ï¿½ï¿½ï¿½ Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½.
+            if(!pq.empty()){ // ¿ì¼±¼øÀ§ Å¥°¡ ºñ¾îÀÖ´Â °æ¿ì.
+                cout << pq.top() << "\n";
                 pq.pop();
             }else{
                 cout << 0 << "\n";
