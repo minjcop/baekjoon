@@ -14,7 +14,6 @@ int main(void){
     int indegree[32001] = { 0, };
     cin >> n >> m;
     // priority_queue <pair <int, int>, vector< pair<int, int> >, cmp > pq;
-    // 그냥 queue 써보자.
     queue <int> q;
     vector <int> v[32001];
     for(int i = 0; i < m; ++i){
